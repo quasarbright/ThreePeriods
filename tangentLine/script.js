@@ -1,3 +1,5 @@
+let fstr, x
+
 let res = 100 //how many points plotted
 let xmin = -10
 let xmax = 10
@@ -9,12 +11,28 @@ function setup() {
     stroke(255)
     strokeWeight(1)
     noFill()
+    $(document).ready(function(){
+      fstr=$('#f-in').val()
+      x=$('#x-in').val()
+      x=parseFloat(x)
+      loop()
+      $("input").change(function(){
+        fstr=$('#f-in').val()
+        x=$('#x-in').val()
+        x=parseFloat(x)
+        loop()
+      })
+    })
 }
 
 function draw() {
+
     background(51);
-    graph('x^3+2*x^2-3*x+1')
-    graph('x')
+    if (fstr && x !== undefined){
+
+      graphTanLine(fstr, x)
+    }
+    noLoop()
 }
 
 function toCoord(v) {
@@ -30,7 +48,7 @@ function toPixel(v) {
 }
 
 function replaceX(expression, x) {
-    return expression.replace(/x/g, x)
+    return expression.replace(/x/g, `(${x})`)
 }
 
 function graph(fstr) {
@@ -60,4 +78,17 @@ function graph(fstr) {
         v2Pixel = toPixel(v2Coord)
         line(v1Pixel.x, v1Pixel.y, v2Pixel.x, v2Pixel.y)
     }
+}
+
+function graphTanLine(fstr, x){
+  function f(x) {
+      return math.eval(replaceX(fstr, x));
+  }
+  graph(fstr)
+  let a = (f(x+.001)-f(x))/0.001
+  let c = f(x)
+  let fx = `${a}*(x-${x})+${c}`
+  $('#out').html(a)
+  graph(fx)
+
 }
