@@ -1,12 +1,12 @@
 let fstr, start, end, size, option
-$(document).ready(function(){
+$(document).ready(function() {
     fstr = $('#function-in').val()
     start = parseFloat($('#start-in').val())
     end = parseFloat($('#end-in').val())
     size = parseFloat($('#size-in').val())
     option = $('#type-select').val()
 
-    $('input').change(function(){
+    $('input').change(function() {
         updateGraph()
     })
 })
@@ -37,7 +37,9 @@ function updateGraph() {
     size = parseFloat($('#size-in').val())
     option = $('#type-select').val()
     // console.log(fstr, start, end, size, option);
-    loop()
+    if (size > 0) {
+        loop()
+    }
 }
 
 function toCoord(v) {
@@ -75,32 +77,69 @@ function graph(fstr, start, end, size, option) {
     line(cp.x, cp.y, dp.x, dp.y)
 
     //plot
-    let dx = (xmax - xmin) / res
-    for (let x = xmin; x < xmax; x += dx) {
+    let xstep = (xmax - xmin) / res
+    for (let x = xmin; x < xmax; x += xstep) {
         v1Coord = createVector(x, f(x))
-        v2Coord = createVector(x + dx, f(x + dx))
+        v2Coord = createVector(x + xstep, f(x + xstep))
         v1Pixel = toPixel(v1Coord)
         v2Pixel = toPixel(v2Coord)
         line(v1Pixel.x, v1Pixel.y, v2Pixel.x, v2Pixel.y)
     }
 
     //sum stuff
-    if(option == 'left'){j = 9
-        for(let x = start; x < end; x += size){
+    let rsum = 0
+    if (option == 'left') {
+        for (let x = start; x < end; x += size) {
             v1Coord = createVector(x, f(x))
             v2Coord = createVector(x + size, 0)
             v1Pixel = toPixel(v1Coord)
             v2Pixel = toPixel(v2Coord)
             rect(v1Pixel.x, v1Pixel.y, v2Pixel.x, v2Pixel.y)
+            rsum += f(x) * size
         }
-    } else if(option == 'right'){
-        for(let x = start + size; x <= end; x += size){
-            v1Coord = createVector(x-size, 0)
+    } else if (option == 'right') {
+        for (let x = start + size; x <= end; x += size) {
+            v1Coord = createVector(x - size, 0)
             v2Coord = createVector(x, f(x))
             v1Pixel = toPixel(v1Coord)
             v2Pixel = toPixel(v2Coord)
             rect(v1Pixel.x, v1Pixel.y, v2Pixel.x, v2Pixel.y)
+            rsum += f(x) * size
+        }
+    } else if (option == 'midpoint') {
+        for (let x = start + size / 2; x < end; x += size) {
+            v1Coord = createVector(x - size / 2, f(x))
+            v2Coord = createVector(x + size / 2, 0)
+            v1Pixel = toPixel(v1Coord)
+            v2Pixel = toPixel(v2Coord)
+            rect(v1Pixel.x, v1Pixel.y, v2Pixel.x, v2Pixel.y)
+            rsum += f(x) * size
+        }
+    } else if (option == 'trapezoid') {
+        for (let x = start; x < end; x += size) {
+            vertexCoords = [
+                createVector(x, f(x)),
+                createVector(x + size, f(x + size)),
+                createVector(x + size, 0),
+                createVector(x, 0)
+            ]
+            vertexPixels = vertexCoords.map(toPixel)
+            beginShape()
+            for (let vertexPixel of vertexPixels) {
+                vertex(vertexPixel.x, vertexPixel.y)
+            }
+            endShape(CLOSE)
+            rsum += 0.5 * (f(x) + f(x + size)) * size
         }
     }
-    //print sum value
+
+    //calculate integral
+    let isum = 0
+    let dx = .001
+    for (let x = start; x < end; x += dx) {
+        isum += f(x)*dx
+    }
+
+    //print sum and integral value
+    $('#out').html(`<p>Riemann sum: ${rsum}<br>Integral: ${isum}</p>`)
 }
