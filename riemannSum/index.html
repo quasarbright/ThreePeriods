@@ -12,7 +12,6 @@
 <body>
     <div class="container">
         <div class="inputs">
-            function: <input id="function-in" type="text" value="x*x">
             start: <input id="start-in" class="num" type="number" value="0">
             end: <input id="end-in" class="num" type="number" value="10">
             size: <input id="size-in" class="num" type="number" value="1">
@@ -20,11 +19,12 @@
             <select id="type-select">
                 <option value="left">left</option>
                 <option value="right">right</option>
-                <option value="mid">mid</option>
+                <option value="midpoint">midpoint</option>
                 <option value="trapezoid">trapezoid</option>
             </select>
             <button id="updateGraph" onclick="updateGraph()">update</button>
         </div>
+        <div id="out"></div>
         <br><br>
         <script src="script.js" charset="utf-8"></script>
     </div>

@@ -55,7 +55,7 @@ function toPixel(v) {
 }
 
 function replaceX(expression, x) {
-    return expression.replace(/x/g, x)
+    return expression.replace(/x/g, `(${x})`)
 }
 
 function graph(fstr, start, end, size, option) {
@@ -137,7 +137,7 @@ function graph(fstr, start, end, size, option) {
     let isum = 0
     let dx = .001
     for (let x = start; x < end; x += dx) {
-        isum += f(x)*dx
+        isum += 0.5 * (f(x) + f(x+dx)) * dx
     }
 
     //print sum and integral value
