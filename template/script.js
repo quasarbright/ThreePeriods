@@ -29,7 +29,7 @@ function toPixel(v) {
 }
 
 function replaceX(expression, x) {
-    return expression.replace(/x/g, x)
+    return expression.replace(/x/g, `(${x})`)
 }
 
 function graph(fstr) {
