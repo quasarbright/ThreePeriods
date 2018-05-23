@@ -1,0 +1,37 @@
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        function: <input onchange="updateVars()" type="text" id="function-in" value="sin(x)">
+        <div class="slidecontainer">
+            <table>
+                <tr>
+                    <td>degree: </td>
+                    <td><input onchange="updateVars()" oninput="updateVars()" type="range" step="1" min="0" max="10" value="2" class="slider" id="degree-slider"></td>
+                    <td><div id="degree-out"></div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="slidecontainer">
+            <table>
+                <tr>
+                    <td>centered at (x-value): </td>
+                    <td><input onchange="updateVars()" oninput="updateVars()" type="range" step=".01" min="-10" max="10" value="0" class="slider" id="center-slider"></td>
+                    <td><p id="center-out"></p></td>
+                </tr>
+            </table>
+        </div>
+        <br><br>
+        <script src="script.js" charset="utf-8"></script>
+    </div>
+</body>
+
+</html>
