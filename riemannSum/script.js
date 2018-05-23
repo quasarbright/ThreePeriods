@@ -1,16 +1,9 @@
 let fstr, start, end, size, option
 $(document).ready(function() {
-    fstr = $('#function-in').val()
-    start = parseFloat($('#start-in').val())
-    end = parseFloat($('#end-in').val())
-    size = parseFloat($('#size-in').val())
-    option = $('#type-select').val()
-
-    $('input').change(function() {
-        updateGraph()
-    })
+    updateGraph()
+    $('input').change(updateGraph)
 })
-let res = 100 //how many points plotted
+let res = 50 //how many points plotted
 let xmin = -10
 let xmax = 10
 let ymin = -10
@@ -33,11 +26,13 @@ function draw() {
 function updateGraph() {
     fstr = $('#function-in').val()
     start = parseFloat($('#start-in').val())
+    $('#start-out').html(start)
     end = parseFloat($('#end-in').val())
+    $('#end-out').html(end)
     size = parseFloat($('#size-in').val())
     option = $('#type-select').val()
     // console.log(fstr, start, end, size, option);
-    if (size > 0) {
+    if (size > 0 && start < end) {
         loop()
     }
 }
@@ -133,13 +128,13 @@ function graph(fstr, start, end, size, option) {
         }
     }
 
-    //calculate integral
-    let isum = 0
-    let dx = .001
-    for (let x = start; x < end; x += dx) {
-        isum += 0.5 * (f(x) + f(x+dx)) * dx
-    }
+    // //calculate integral
+    // let isum = 0
+    // let dx = .001
+    // for (let x = start; x < end; x += dx) {
+    //     isum += 0.5 * (f(x) + f(x+dx)) * dx
+    // }
 
     //print sum and integral value
-    $('#out').html(`<p>Riemann sum: ${rsum}<br>Integral: ${isum}</p>`)
+    $('#out').html(`<p>Riemann sum: ${rsum}</p>`)//<br>Integral: ${isum}</p>`)
 }

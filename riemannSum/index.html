@@ -13,20 +13,42 @@
     <div class="container">
         <div class="inputs">
             function: <input id="function-in" type="text" value="x^2+1">
-            start: <input id="start-in" class="num" type="number" value="0">
-            end: <input id="end-in" class="num" type="number" value="10">
-            size: <input id="size-in" class="num" type="number" value="1">
-            type:
-            <select id="type-select">
-                <option value="left">left</option>
-                <option value="right">right</option>
-                <option value="midpoint">midpoint</option>
-                <option value="trapezoid">trapezoid</option>
-            </select>
+            <div class="slidecontainer">
+                <table>
+                    <tr>
+                        <td>start: </td>
+                        <td><input oninput="updateGraph()" onchange="updateGraph()" type="range" step=".01" min="-10" max="10" value="0" class="slider" id="start-in"></td>
+                        <td>
+                            <div id="start-out"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="slidecontainer">
+                <table>
+                    <tr>
+                        <td>end: </td>
+                        <td><input oninput="updateGraph()" onchange="updateGraph()" type="range" step=".01" min="-10" max="10" value="10" class="slider" id="end-in"></td>
+                        <td>
+                            <div id="end-out"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            size: <input id="size-in" class="num" type="number" value="1"><br><br>
+            <div class="">
+                type:
+                <select id="type-select">
+                    <option value="left">left</option>
+                    <option value="right">right</option>
+                    <option value="midpoint">midpoint</option>
+                    <option value="trapezoid">trapezoid</option>
+                </select>
+            </div><br>
             <button id="updateGraph" onclick="updateGraph()">update</button>
         </div>
         <div id="out"></div>
-        <br><br>
+
         <script src="script.js" charset="utf-8"></script>
     </div>
 </body>
