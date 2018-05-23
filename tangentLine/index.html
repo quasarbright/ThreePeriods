@@ -9,14 +9,19 @@
 </head>
 
 <body>
-  <form>
-f(x)=:<br>
-<input id="f-in"type="text" name="fstring"value="sin(x)"><br>
-at x=:<br>
-<input id="x-in"type="text" name="xx"value="0">
+f(x)= <input id="f-in"type="text" name="fstring"value="sin(x)"><br>
+<!-- <input id="x-in"type="text" name="xx"value="0"> -->
+<div class="slidecontainer">
+    <table>
+        <tr>
+            <td>at x= </td>
+            <td><input onchange="updateVars()" oninput="updateVars()" type="range" step=".01" min="-10" max="10" value="0" class="slider" id="x-in"></td>
+            <td><p id="x-out"></p></td>
+        </tr>
+    </table>
+</div>
     <script src="script.js" charset="utf-8"></script>
-</form>
-dy/dx =<p id="out"></p>
+<p id="out"></p>
 </body>
 
 </html>

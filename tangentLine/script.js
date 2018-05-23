@@ -1,6 +1,6 @@
 let fstr, x
 
-let res = 100 //how many points plotted
+let res = 50 //how many points plotted
 let xmin = -10
 let xmax = 10
 let ymin = -10
@@ -12,24 +12,25 @@ function setup() {
     strokeWeight(1)
     noFill()
     $(document).ready(function(){
-      fstr=$('#f-in').val()
-      x=$('#x-in').val()
-      x=parseFloat(x)
-      loop()
+        updateVars()
       $("input").change(function(){
-        fstr=$('#f-in').val()
-        x=$('#x-in').val()
-        x=parseFloat(x)
-        loop()
+        updateVars()
       })
     })
+}
+
+function updateVars(){
+    fstr=$('#f-in').val()
+    x=$('#x-in').val()
+    x=parseFloat(x)
+    $('#x-out').html(''+x)
+    loop()
 }
 
 function draw() {
 
     background(51);
-    if (fstr && x !== undefined){
-
+    if (fstr !== undefined && x !== undefined){
       graphTanLine(fstr, x)
     }
     noLoop()
@@ -88,7 +89,7 @@ function graphTanLine(fstr, x){
   let a = (f(x+.001)-f(x))/0.001
   let c = f(x)
   let fx = `${a}*(x-${x})+${c}`
-  $('#out').html(a)
+  $('#out').html(`dy/dx = ${a}`)
   graph(fx)
 
 }
