@@ -50,10 +50,15 @@ function replaceX(expression, x) {
     return expression.replace(/x/g, `(${x})`)
 }
 
-function graph(fstr) {
+function graph(f_) {
     //func
-    function f(x) {
-        return math.eval(replaceX(fstr, x));
+    let f
+    if(typeof(f_) === "string"){
+        f = function(x) {
+            return math.eval(replaceX(fstr, x));
+        }
+    } else if(typeof(f_) === "function") {
+        f = f_
     }
 
     //axes
