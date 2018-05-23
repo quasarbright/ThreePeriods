@@ -35,10 +35,10 @@
                     </tr>
                 </table>
             </div>
-            size: <input id="size-in" class="num" type="number" value="1"><br><br>
+            size: <input onchange="updateGraph" id="size-in" class="num" type="number" value="1"><br><br>
             <div class="">
                 type:
-                <select id="type-select">
+                <select onchange="updateGraph()" id="type-select">
                     <option value="left">left</option>
                     <option value="right">right</option>
                     <option value="midpoint">midpoint</option>

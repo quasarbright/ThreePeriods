@@ -19,7 +19,7 @@ function setup() {
 function draw() {
     background(51);
     if (fstr !== undefined) {
-        graph(fstr)
+        graphTaylor(fstr, degree, center)
     }
     noLoop()
 }
@@ -77,4 +77,14 @@ function graph(fstr) {
         v2Pixel = toPixel(v2Coord)
         line(v1Pixel.x, v1Pixel.y, v2Pixel.x, v2Pixel.y)
     }
+}
+
+function graphTaylor(fstr, degree, center){
+    graph(fstr)
+    function f(x) {
+        return math.eval(replaceX(fstr, x))
+    }
+    // now you know f(x). Now just build a generalized taylor series in terms of f, degree, and center
+    // you'll need to do the nth derivative and loop a summation of functions. that's hard
+
 }
