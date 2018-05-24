@@ -53,9 +53,13 @@ function replaceX(expression, x) {
 }
 
 function graph(fstr) {
-    //func
-    function f(x) {
-        return math.eval(replaceX(fstr, x));
+    let f
+    if (typeof(fstr) == 'function'){
+        f = fstr//fstr is a function in this case
+    } else{
+        f = function(x) {
+            return math.eval(replaceX(fstr, x));
+        }
     }
 
     //axes
@@ -81,15 +85,20 @@ function graph(fstr) {
     }
 }
 
-function graphTanLine(fstr, x){
+function graphTanLine(fstr, x_){
   function f(x) {
       return math.eval(replaceX(fstr, x));
   }
   graph(fstr)
-  let a = (f(x+.001)-f(x))/0.001
-  let c = f(x)
-  let fx = `${a}*(x-${x})+${c}`
-  $('#out').html(`dy/dx = ${a}`)
-  graph(fx)
+  let a = (f(x_+.001)-f(x_))/0.001
+  let c = f(x_)
+  // let fx = `${a}*(x-${x})+${c}`
+  if(a !== undefined){
+      function f(x){
+          return a*(x-x_)+c
+      }
+      graph(f)
+      $('#out').html(`dy/dx = ${a}`)
+  }
 
 }
