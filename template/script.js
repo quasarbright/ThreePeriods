@@ -34,9 +34,13 @@ function replaceX(expression, x) {
 }
 
 function graph(fstr) {
-    //func
-    function f(x) {
-        return math.eval(replaceX(fstr, x));
+    let f
+    if (typeof(fstr) == 'function'){
+        f = fstr//fstr is a function in this case
+    } else{
+        f = function(x) {
+            return math.eval(replaceX(fstr, x));
+        }
     }
 
     //axes
