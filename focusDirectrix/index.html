@@ -1,0 +1,33 @@
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <script src="script.js" charset="utf-8"></script>
+    <div class="slidecontainer">
+        <table>
+            <tr>
+                <td>directrix height: </td>
+                <td><input onchange="updateVars()" oninput="updateVars()" type="range" step=".01" min="-10" max="10" value="-1" class="slider" id="dy-in"></td>
+                <td><p id="dy-out"></p></td>
+            </tr>
+        </table>
+    </div>
+    <div class="slidecontainer">
+        <table>
+            <tr>
+                <td>circle x:</td>
+                <td><input onchange="updateVars()" oninput="updateVars()" type="range" step=".01" min="-10" max="10" value="2" class="slider" id="circx-in"></td>
+                <td><p id="circx-out"></p></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
