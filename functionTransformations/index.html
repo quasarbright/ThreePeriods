@@ -1,0 +1,32 @@
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    f(x): <input type="text" onchange="updateVars()" id="function-in" value="sin(x)">
+    type:
+    <select onchange="updateSelect()" id="type-select">
+        <option value="vertical stretch">vertical stretch</option>
+        <option value="horizontal stretch">horizontal stretch</option>
+        <option value="horizontal translation">horizontal translation</option>
+        <option value="vertical translation">vertical translation</option>
+        <option value="reflect along y axis">reflect along y axis</option>
+        <option value="reflect along x axis">reflect along x axis</option>
+    </select>
+    amount: <input type="num" id="arg-in" value="2">
+    <button onclick="updateVars()" id="reset-button">reset</button>
+    <button onclick="apply()" id="apply-button">apply</button><br>
+    <div>
+        <p id="f-out"></p>
+    </div>
+    <br><br>
+    <script src="script.js" charset="utf-8"></script>
+</body>
+
+</html>
