@@ -1,0 +1,55 @@
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <style media="screen">
+        .red{
+            color: red;
+        }
+        .blue{
+            color: blue;
+        }
+        .purple{
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slidecontainer">
+        <table class="red">
+            <tr>
+                <td>a: </td>
+                <td><input onchange="updateVars()" oninput="updateVars()" type="range" step="1" min="-10" max="10" value="3" class="slider" id="a-in"></td>
+                <td><p id="a-out"></p></td>
+            </tr>
+            <tr>
+                <td>b: </td>
+                <td><input onchange="updateVars()" oninput="updateVars()" type="range" step="1" min="-10" max="10" value="0" class="slider" id="b-in"></td>
+                <td><p id="b-out"></p></td>
+            </tr>
+        </table>
+        <p class="red" id="z1-out"></p>
+        <table class="blue">
+            <tr>
+                <td>c: </td>
+                <td><input onchange="updateVars()" oninput="updateVars()" type="range" step="1" min="-10" max="10" value="0" class="slider" id="c-in"></td>
+                <td><p id="c-out"></p></td>
+            </tr>
+            <tr>
+                <td>d: </td>
+                <td><input onchange="updateVars()" oninput="updateVars()" type="range" step="1" min="-10" max="10" value="1" class="slider" id="d-in"></td>
+                <td><p id="d-out"></p></td>
+            </tr>
+        </table>
+        <p class="blue" id="z2-out"></p>
+        <p class="purple" id="product-out"></p>
+    </div>
+    <script src="script.js" charset="utf-8"></script>
+</body>
+
+</html>
