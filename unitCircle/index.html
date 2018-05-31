@@ -1,0 +1,53 @@
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <style media="screen">
+        .red{
+            color:#ff0000;
+        }
+        .orange{
+            color:orange;
+        }
+        .purple{
+            color:purple;
+        }
+        .pink{
+            color:DeepPink;
+        }
+        .blue{
+            color:blue;
+        }
+        .green{
+            color:#00ff00;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="script.js" charset="utf-8"></script>
+    <table>
+        <tr>
+            <td><input oninput="updateVars()" type="range" min="0" max="6.29" step=".01" id="theta-in" value="1.05"></td>
+            <td><p id="theta-out"></p></td>
+        </tr>
+        <tr>
+            <td class="red"><input type="checkbox" onchange="updateVars()" id="sin-check">sin</td>
+            <td class="orange"><input type="checkbox" onchange="updateVars()" id="cos-check">cos</td>
+        </tr>
+        <tr>
+            <td class="purple"><input type="checkbox" onchange="updateVars()" id="tan-check">tan</td>
+            <td class="pink"><input type="checkbox" onchange="updateVars()" id="tan-check">cot</td>
+        </tr>
+        <tr>
+            <td class="blue"><input type="checkbox" onchange="updateVars()" id="sec-check">sec</td>
+            <td class="green"><input type="checkbox" onchange="updateVars()" id="csc-check">csc</td>
+        </tr>
+    </table>
+</body>
+
+</html>
