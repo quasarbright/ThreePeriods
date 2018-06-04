@@ -48,18 +48,30 @@ function draw() {
     secPointp = toPixel(secPoint)
     cscPointp = toPixel(cscPoint)
 
-    stroke('#ff0000')
-    line(xShadowp.x, xShadowp.y, pp.x, pp.y)
-    stroke('orange')
-    line(yShadowp.x, yShadowp.y, pp.x, pp.y)
-    stroke('purple')
-    line(pp.x, pp.y, tanPointp.x, tanPointp.y)
-    stroke('DeepPink')
-    line(pp.x, pp.y, cotPointp.x, cotPointp.y)
-    stroke('blue')
-    line(originp.x, originp.y, secPointp.x, secPointp.y)
-    stroke('#00ff00')
-    line(originp.x, originp.y, cscPointp.x, cscPointp.y)
+    if(checks.sin){
+        stroke('#ff0000')
+        line(xShadowp.x, xShadowp.y, pp.x, pp.y)
+    }
+    if(checks.cos){
+        stroke('orange')
+        line(yShadowp.x, yShadowp.y, pp.x, pp.y)
+    }
+    if(checks.tan){
+        stroke('purple')
+        line(pp.x, pp.y, tanPointp.x, tanPointp.y)
+    }
+    if(checks.cot){
+        stroke('DeepPink')
+        line(pp.x, pp.y, cotPointp.x, cotPointp.y)
+    }
+    if(checks.sec){
+        stroke('blue')
+        line(originp.x, originp.y, secPointp.x, secPointp.y)
+    }
+    if(checks.csc){
+        stroke('#00ff00')
+        line(originp.x, originp.y, cscPointp.x, cscPointp.y)
+    }
     //draw circle
     drawArc(radius, 0, 7)
     //draw point
