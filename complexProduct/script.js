@@ -48,7 +48,7 @@ function draw() {
         strokeWeight(10)
 
 
-        stroke(0, 0, 255)
+        stroke(0, 255, 0)
         point(z2Vecp.x, z2Vecp.y)
         drawArc(z2Vec.mag(), 0, z2Vec.heading())
         drawArc(z1Vec.mag(), z1Vec.heading(), z1Vec.heading()+z2Vec.heading())

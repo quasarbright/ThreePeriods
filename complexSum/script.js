@@ -47,7 +47,7 @@ function draw() {
 
         z2Vec = createVector(c, d)
         z2Vecp = toPixel(z2Vec)
-        stroke(0, 0, 255)
+        stroke(0, 255, 0)
         strokeWeight(1)
         drawVec(createVector(0,0), z2Vec)
         drawVec(z1Vec, z2Vec)
