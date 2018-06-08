@@ -4,7 +4,7 @@ let xmax = 10
 let ymin = -10
 let ymax = 10
 
-let f, fstr, transformationType, arg
+let f, fstr, foriginalstr, transformationType, arg
 
 function setup() {
     createCanvas(400, 400);
@@ -19,6 +19,7 @@ function setup() {
 function updateVars(){
     $('document').ready(function(){
         fstr = $('#function-in').val()
+        foriginalstr = $('#function-in').val()
         f = function(x){
             return math.eval(replaceX(fstr, x))
         }
@@ -55,6 +56,7 @@ function draw() {
     background(51);
     if(f !== undefined){
         graph(f)
+        graph(foriginalstr)
     }
     noLoop()
 }
